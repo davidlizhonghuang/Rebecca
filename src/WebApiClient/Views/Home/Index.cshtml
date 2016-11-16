@@ -1,0 +1,151 @@
+﻿@{
+    Layout = null;
+    }
+<!DOCTYPE html>
+<html ng-app="ContactApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/angularjs/angular.js"></script>
+ 
+    <title>WebApi Client</title>
+    <style>
+        html,body{
+            font-size: 12px;
+            font-family:Arial;
+        }
+    </style>
+</head>
+<body ng-controller="contactCtrl">
+    
+
+    <div class="container body-content">
+
+        <div>develop start time: 3pm , complete time : 5:45pm.</div>
+        
+        <div class="row col-sm-12">
+          
+              <div class="col-sm-6">
+
+                <p class="alert alert-danger" ng-show="errMsg">Error occurs, please contact us for more detail...</p>
+
+
+                <h3>Task 1: Get All</h3>
+                <input type="button" ng-click="getAll()" value="Get All Contacts" />
+
+                <table class="table table-responsive" ng-show="allContacts">
+                    <thead>
+                        <tr><th>First Name</th><th>Last Name</th><th>Phone</th><th>Email</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="contact in allContacts">
+                           
+                            <td>
+                                {{contact.firstName}}
+                            </td>
+                            <td>
+                                {{contact.lastName}}
+                            </td>
+                            <td>
+                                {{contact.phone}}
+                            </td>
+                            <td>
+                                {{contact.email}}
+                            </td>
+                            <td><input type="button" class="btn btn-success" ng-click="getEach(contact.id)" value="Get Name" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+           
+             <div class="col-sm-6">
+                <h3>Task 2: Get Name</h3>
+                <table class="table table-responsive" ng-show="EachContact[0]">
+                    <thead>
+                        <tr><th>First Name</th><th>Last Name</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            
+                            <td>
+                                {{EachContact[0].firstName}}
+                            </td>
+                            <td>
+                                {{EachContact[0].lastName}}
+                            </td>
+                          
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                
+
+            </div>
+     
+           </div>
+     
+    
+    </div>
+
+
+ <script>
+
+     angular.module("ContactApp", []);
+
+     var contactApp = angular.module("ContactApp");
+
+     contactApp.controller("contactCtrl", contactCtrl);
+
+     contactApp.config(function ($httpProvider) {
+         $httpProvider.defaults.useXDomain = true;
+         delete $httpProvider.defaults.headers.common['X-Requested-With'];
+     });
+
+     function contactCtrl($scope, $http) {
+
+         $scope.errMsg = "";
+
+         $scope.getAll = function () {
+
+             $http.get("Home/GetData")
+
+             .success(function (data) {
+
+                 $scope.allContacts = JSON.parse(data);
+
+             })
+
+             .error(function (err)
+             {
+                 $scope.errMsg = "error: unable to get all contact lists";
+             });
+         };
+
+         $scope.getEach = function (id) {
+
+             $http.get("Home/GetDetail/"+id)
+
+         .success(function (data) {
+             $scope.EachContact = JSON.parse(data);
+            
+         })
+
+         .error(function (err) {
+
+             $scope.errMsg = "error: unable to get name detail";
+
+         });
+
+             
+         }
+
+
+     }
+
+ </script>
+</body>
+</html>

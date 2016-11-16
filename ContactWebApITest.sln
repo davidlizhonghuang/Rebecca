@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5AE1AEB4-19FE-406E-A5DE-27EAC8B65473}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{25D29328-4743-4B17-8A07-F866FB82E36E}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ContactWebApITest", "src\ContactWebApITest\ContactWebApITest.xproj", "{4AFE77D0-7EEA-4FAD-8C68-CC345DF1B6AE}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebApiClient", "src\WebApiClient\WebApiClient.xproj", "{9A5CD74D-98A4-4DBB-AA45-D6F5293403BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AFE77D0-7EEA-4FAD-8C68-CC345DF1B6AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFE77D0-7EEA-4FAD-8C68-CC345DF1B6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFE77D0-7EEA-4FAD-8C68-CC345DF1B6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFE77D0-7EEA-4FAD-8C68-CC345DF1B6AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A5CD74D-98A4-4DBB-AA45-D6F5293403BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A5CD74D-98A4-4DBB-AA45-D6F5293403BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A5CD74D-98A4-4DBB-AA45-D6F5293403BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A5CD74D-98A4-4DBB-AA45-D6F5293403BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AFE77D0-7EEA-4FAD-8C68-CC345DF1B6AE} = {5AE1AEB4-19FE-406E-A5DE-27EAC8B65473}
+		{9A5CD74D-98A4-4DBB-AA45-D6F5293403BC} = {5AE1AEB4-19FE-406E-A5DE-27EAC8B65473}
+	EndGlobalSection
+EndGlobal
