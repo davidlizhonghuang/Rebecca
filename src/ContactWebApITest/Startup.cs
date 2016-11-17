@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ContactWebApITest.Models;
-using Newtonsoft.Json.Serialization;
 
 namespace ContactWebApITest
 {
@@ -21,10 +16,7 @@ namespace ContactWebApITest
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            Configuration = builder.Build();
-
-         
-            
+            Configuration = builder.Build();  
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -35,7 +27,8 @@ namespace ContactWebApITest
             // Add framework services.
             services.AddMvc();
             services.AddSingleton<IContactsService, ContactsService>();
-            services.AddCors();
+            services.AddSingleton<ILoggerFactory, LoggerFactory>();
+            services.AddCors();  
 
           
         }
@@ -45,7 +38,6 @@ namespace ContactWebApITest
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
             app.UseMvc();
         }
     }

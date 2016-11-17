@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "angularjs": "1.5.8",
+    "bootstrap": "3.3.7",
+    "elmah": "1.2.2",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.Razor.Tools": {

@@ -7,13 +7,25 @@ using System.Net.Http;
 using ContactWebApITest.Models;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Logging;
+using ContactWebApITest.Logging;
 
-namespace WebApiClient.Controllers
+namespace ContactWebApITest.Controllers
 {
+
+
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
         public IActionResult Index()
         {
+            _logger.LogInformation(LoggingEvents.GET_ITEM, "index.cshtml page is loaded");
+
             return View();
         }
 
@@ -63,13 +75,18 @@ namespace WebApiClient.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                   tcontent = await response.Content.ReadAsStringAsync();
+                    _logger.LogInformation(LoggingEvents.GET_ITEM, "response is sucessful");
+
+                    tcontent = await response.Content.ReadAsStringAsync();
                 }
 
                 return Json(tcontent);
             }
             catch (Exception ex)
             {
+
+                _logger.LogInformation(LoggingEvents.GET_ITEM_NOTFOUND, "response is not sucessful");
+
 
                 return Json("err"); 
 
@@ -105,6 +122,8 @@ namespace WebApiClient.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    _logger.LogInformation(LoggingEvents.GET_ITEM, "response is sucessful");
+
                     tcontent = await response.Content.ReadAsStringAsync();
                 }
 
@@ -112,6 +131,8 @@ namespace WebApiClient.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogInformation(LoggingEvents.GET_ITEM_NOTFOUND, "response is not sucessful");
+
                 return Json("no name");
 
                 throw ex;
@@ -120,6 +141,6 @@ namespace WebApiClient.Controllers
 
 
 
-
+     
     }
 }
