@@ -4,5 +4,5 @@ Asp.Net Web API 2 , Asp.Net Web API proxy, and Angular JS front end projects are
 
 We can self-host Web API2 in IIS or cloud, We then can install asp.net MVC 6 client anywhere to call this web API2 any time. 
 
-Simply clone or dowload the project and run at visual studio 2015.  
+Simply clone or download the project and run at visual studio 2015 (core 1.0 preview 2).  
 
